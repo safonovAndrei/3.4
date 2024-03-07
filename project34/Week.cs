@@ -1,5 +1,5 @@
 using System;
-namespace ZZ
+namespace project34
 {
     class week: IprintArray 
     {

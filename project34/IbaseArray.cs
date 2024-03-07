@@ -1,6 +1,6 @@
 using System;
 
-namespace ZZ
+namespace project34
 {
     internal interface IbaseArray: IprintArray
     {

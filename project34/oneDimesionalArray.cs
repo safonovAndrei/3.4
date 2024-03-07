@@ -1,6 +1,6 @@
 using System;
 
-namespace ZZ
+namespace project34
 {
     
     public sealed class oneDimensionalArray<Z>:  baseArray, IdeleteRepeating
@@ -12,7 +12,7 @@ namespace ZZ
 
         public oneDimensionalArray(bool isNotRandom): base(isNotRandom){ }
 
-        protected override void getRandomArrayInt()
+        protected override void getRandomArray()
         {
             Random random = new Random();
             array = new int[random.Next(1, 10)];

@@ -1,6 +1,6 @@
 using System;
 
-namespace ZZ
+namespace project34
 {
     public interface IprintArray{
         void printArray();
