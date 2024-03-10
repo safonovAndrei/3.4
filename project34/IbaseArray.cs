@@ -2,9 +2,8 @@ using System;
 
 namespace project34
 {
-    internal interface IbaseArray: IprintArray
+    internal interface IbaseArray: IPrintable
     {
-        double getAverageArrayValue();
         void fillArray(bool isNotRandom);
     }
 }

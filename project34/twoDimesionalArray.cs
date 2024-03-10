@@ -2,25 +2,25 @@ using System;
 
 namespace project34
 {
-    public sealed class twoDimensionalArray: baseArray, IgetTwoDimensionalArrayAsSnake
+    public sealed class twoDimensionalArray<Z>: baseArray<Z>
     {
-        private int[,] array;
+        private Z[,] array;
 
-        public twoDimensionalArray(bool isNotRandom): base(isNotRandom){ }
+        public twoDimensionalArray(bool isNotRandom, objectProvider<Z> inputProvider): base(isNotRandom, inputProvider){ }
 
-        protected override void getFormUserArray()
+        protected override void getFromUserArray()
         {
             Console.WriteLine("Ширина двумерного массива: ");
             int length = int.Parse(Console.ReadLine());
             Console.WriteLine("Длина двумерного массива: ");
             int width = int.Parse(Console.ReadLine());
-            array = new int[width, length];
+            array = new Z[width, length];
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 for (int j = 0; j < array.GetLength(1); j++)
                 {
                     Console.WriteLine($"Введите элемент с координатой ({j + 1}; {i + 1}): ");
-                    array[i, j] = int.Parse(Console.ReadLine());
+                    array[i, j] = Provider.Convert(Console.ReadLine());
                 }
             }
         }
@@ -30,51 +30,14 @@ namespace project34
             Random random = new Random();
             int length = random.Next(3, 10);
             int width = random.Next(3, 10);
-            array = new int[width, length];
+            array = new Z[width, length];
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 for (int j = 0; j < array.GetLength(1); j++)
                 {
-                    array[i, j] = random.Next(0, 10);
+                    array[i, j] = Provider.Generate();
                 }
             }
-        }
-        
-        
-        public override double getAverageArrayValue()
-        {
-            int sum = 0;
-            for (int i = 0; i < array.GetLength(0); i++)
-            {
-                for (int j = 0; j < array.GetLength(1); j++)
-                {
-                    sum += array[i, j];
-                }
-            }
-            return sum / array.Length;
-        }
-
-        int[,] IgetTwoDimensionalArrayAsSnake.getTwoDimensionalArrayAsSnake()
-        {
-            int[,] newArray = new int[array.GetLength(0), array.GetLength(1)];
-
-            for (int i = 0; i < array.GetLength(0); i++)
-            {
-
-                for (int j = 0; j < array.GetLength(1); j++)
-                {
-                    if (i % 2 == 0)
-                    {
-                        newArray[i, j] = array[i, j];
-                    }
-                    else
-                    {
-                        newArray[i, j] = array[i, array.GetLength(1) - j - 1];
-                    }
-                }
-            }
-            array = newArray;
-            return newArray;
         }
 
         public override void printArray()

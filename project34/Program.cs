@@ -5,9 +5,11 @@ namespace project34
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("3.2");
-            
-            IbaseArray[] arrays = new IbaseArray[3];
+            IPrintable[] arrays = new IPrintable[8];
+            intProvider newInt = new intProvider();
+            boolProvider newBool = new boolProvider();
+            doubleProvider newDouble = new doubleProvider();
+            stringProvider newString = new stringProvider();
             
             Console.WriteLine("Ввести массивы не случайно? (Yes, No): ");
             string answer = Console.ReadLine();
@@ -21,28 +23,20 @@ namespace project34
             {
                 userAnswer = false;
             }
-            arrays[0] = new oneDimensionalArray(userAnswer);
-            arrays[1] = new twoDimensionalArray(userAnswer);
-            arrays[2] = new jagged(userAnswer);            
-
-            for(int i = 0; i < arrays.Length; i++)
-            {
-                arrays[i].printArray();
-                Console.WriteLine($"average value = {arrays[i].getAverageArrayValue()}");
-            }
-
-            Console.WriteLine("3.3");
-
-            IprintArray[] arrays2 = new IprintArray[4];
-            arrays2[0] = new oneDimensionalArray(userAnswer);
-            arrays2[1] = new twoDimensionalArray(userAnswer);
-            arrays2[2] = new jagged(userAnswer);
-            arrays2[3] = new week();
             
-            for (int i = 0; i < arrays2.Length; i++)
+            arrays[0] = new oneDimensionalArray<int>(userAnswer, newInt);
+            arrays[1] = new oneDimensionalArray<bool>(userAnswer, newBool);
+            arrays[2] = new oneDimensionalArray<double>(userAnswer, newDouble);
+            arrays[3] = new oneDimensionalArray<string>(userAnswer, newString);
+            arrays[4] = new twoDimensionalArray<int>(userAnswer, newInt);
+            arrays[5] = new twoDimensionalArray<bool>(userAnswer, newBool);
+            arrays[6] = new twoDimensionalArray<double>(userAnswer, newDouble);
+            arrays[7] = new twoDimensionalArray<string>(userAnswer, newString);
+            
+            for (int i = 0; i < arrays.Length; i++)
             {
                 Console.WriteLine("");
-                arrays2[i].printArray();
+                arrays[i].printArray();
             }
         }
     }

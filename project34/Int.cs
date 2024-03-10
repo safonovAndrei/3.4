@@ -2,9 +2,9 @@ using System;
 
 namespace project34
 {
-    public class IntProvider: ObjectProvider<int>
+    public class intProvider: objectProvider<int>
     {
-        public override int Generic(){
+        public override int Generate(){
             int Int = random.Next(-100, 100);
             return Int;
         }

@@ -2,10 +2,10 @@ using System;
 
 namespace project34
 {
-    public class ObjectProvider<V>
+    public abstract class objectProvider<Z>
     {
         protected Random random = new Random();
-        public abstract V Generic<();
-        public abstract V Convert(string value);
+        public abstract Z Generate();
+        public abstract Z Convert(string value);
     }
 }

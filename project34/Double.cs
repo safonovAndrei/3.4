@@ -2,10 +2,10 @@ using System;
 
 namespace project34
 {
-    public class IntProvider: ObjectProvider<double>
+    public class doubleProvider: objectProvider<double>
     {
-        public override double Generic(){
-            double Double = random.NextDouble(-100, 100);
+        public override double Generate(){
+            double Double = random.NextDouble();
             return Double;
         }
         public override double Convert(string value){

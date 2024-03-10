@@ -2,7 +2,7 @@ using System;
 
 namespace project34
 {
-    public interface IprintArray{
+    public interface IPrintable{
         void printArray();
     }
 }
